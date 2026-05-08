@@ -44,3 +44,22 @@ document.getElementById("tituloProfissional").innerText = tituloProfissional;
 document.getElementById("minhaBio").innerText = minhaBio
 document.getElementById("anoFormatura").innerText = "Ano de formatura:" + anoFormatura;
 document.getElementById("tempoRestanteParaFormatura").innerText = tempoRestante;
+
+//LAÇOS DE REPETIÇÃO
+
+// laço de repetição FOR
+let habilidades = ["Esforçada", "Inteligente", "Eloquente", "Engraçada"];
+for (let i = 0; i < habilidades.length; i++) {
+    document.write(`<p> ${habilidades[i]} </p>`)
+};  
+
+// laço de repetição WHILE
+let num = prompt("Digite um número par:")
+while (num % 2 !==0) {
+    num = prompt("Ops, esse número não é par. Tente novamente!");
+}
+
+//laço de repetição DO WHILE
+do {
+    num = prompt("Digite um número par");
+} while (num % 2 !==0);
