@@ -1,2 +1,2 @@
-# portif-lio
-Portifólio pessoal para apresentar minha bio e meus projetos.
+# portfolio
+Portfólio pessoal para apresentar minha bio e meus projetos.
