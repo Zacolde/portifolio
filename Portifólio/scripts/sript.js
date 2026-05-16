@@ -1,148 +1,166 @@
 const botao = document.getElementById("modoClaroEscuro");
-console.log(botao);
+const resultadoJornada = document.getElementById("resultado-jornada");
+//-----------------------------------------------------------------------------------------------
+
+// MODO ESCURO / CLARO
+
+let modoEscuro = false;
+
+function alternarModo() {
+
+    if (modoEscuro === false) {
+
+        document.body.style.backgroundColor = "#121212";
+        document.body.style.color = "white";
+
+        botao.innerText = "☀️ Modo Claro";
+
+        modoEscuro = true;
+
+    } else {
+
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+
+        botao.innerText = "🌙 Modo Escuro";
+
+        modoEscuro = false;
+    }
+}
+
+botao.addEventListener("click", alternarModo);
+
+//---------------------------------------------------------------------------------------------
+// HABILIDADES (FOR)
+
+let habilidades = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "Python",
+  "GitHub",
+  "Responsividade",
+  "Manipulação do DOM"
+];
+
+function renderizarHabilidades() {
+
+    const lista = document.getElementById("listaHabilidades");
+
+    for (let i = 0; i < habilidades.length; i++) {
+
+        let item = document.createElement("li");
+        item.innerText = "✅ " + habilidades[i];
+
+        lista.appendChild(item);
+    }
+}
+
+renderizarHabilidades();
+
+//---------------------------------------------------------------------------------------------
+// DADOS PESSOAIS
 
 const NOME = "Francesca Cerezo";
 let tituloProfissional = "Técnica em análise e desenvolvimento de sistemas";
-let minhaBio = "Eforçada e resiliente";
+let minhaBio = "Garota de programa";
 let anoFormatura = 2026;
-let mesFormatura = 12;
-let diaFormatura = 31;
-let anoIngresso = 2025;
-let mesIngresso = 2;
-let diaIngresso = 10;
 
-let dataAtual = new Date(); //DATA ATUAL 
-let mesAtual = dataAtual.getMonth() +1; //MES ATUAL
-let anoAtual = dataAtual.getFullYear(); //ANO ATUAL
-let diaAtual = dataAtual.getDate(); //DIA ATUAL
+function calcularTempoRestante() {
 
-//CALCULO DE TEMPO RESTANTE DO CURSO
-let mesesRestantes = mesFormatura - mesAtual
-let diasRestantes = diaFormatura - diaAtual
-let anosRestantes = anoFormatura - anoAtual
-let tempoRestante = `Anos restantes: ${anosRestantes}, Meses restantes: ${mesesRestantes} Dias restantes: ${diasRestantes}`
+    let mesFormatura = 12;
+    let diaFormatura = 31;
 
-let indefinido;
-let nulo = null;
-let curso ={
-    nome : "Análise e desenvolvimentos de sistemas",
-    semestre : 3,
-    disciplinaAtual : "linguagens de programação"
+    let dataAtual = new Date();
+
+    let anosRestantes = anoFormatura - dataAtual.getFullYear();
+    let mesesRestantes = mesFormatura - (dataAtual.getMonth() + 1);
+    let diasRestantes = diaFormatura - dataAtual.getDate();
+
+    return `Anos restantes: ${anosRestantes}, Meses restantes: ${mesesRestantes}, Dias restantes: ${diasRestantes}`;
 }
 
-console.log(typeof tituloProfissional);
-console.log(typeof minhaBio);
-console.log(typeof anoFormatura);
-console.log(typeof anoIngresso);
-console.log(typeof indefinido);
-console.log(typeof nulo);
-console.log(typeof curso);
-console.log(typeof NOME);
+function mostrarDadosPessoais() {
 
-document.getElementById("meuNome").innerText = NOME;
-document.getElementById("tituloProfissional").innerText = tituloProfissional;
-document.getElementById("minhaBio").innerText = minhaBio
-document.getElementById("anoFormatura").innerText = "Ano de formatura:" + anoFormatura;
-document.getElementById("tempoRestanteParaFormatura").innerText = tempoRestante;
-
-``// ─── QUIZ DE PERFIL ───────────────────────────────────────────
-const btnVisual      = document.getElementById("btn-visual");
-const btnLogica      = document.getElementById("btn-logica");
-const resultadoQuiz  = document.getElementById("resultado-quiz");
-
-btnVisual.addEventListener("click", function() {
-  
-  resultadoQuiz.innerHTML = `
-    <strong>🎨 Você tem perfil Front-End!</strong><br>
-    Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.
-    Tecnologias pra você: HTML, CSS, React, Vue.
-  `;
-  resultadoQuiz.style.backgroundColor = "#e8f4fd";
-  resultadoQuiz.style.padding          = "12px";
-  resultadoQuiz.style.borderRadius     = "8px";
-  resultadoQuiz.style.marginTop        = "10px";
-});
-
-btnLogica.addEventListener("click", function() {
-  
-  resultadoQuiz.innerHTML = `
-    <strong>⚙️ Você tem perfil Back-End!</strong><br>
-    Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.
-    Tecnologias pra você: Node.js, Python, bancos de dados.
-  `;
-  resultadoQuiz.style.backgroundColor = "#e8f8f0";
-  resultadoQuiz.style.padding          = "12px";
-  resultadoQuiz.style.borderRadius     = "8px";
-  resultadoQuiz.style.marginTop        = "10px";
-});
-
-
-let pontosFront  = 0;
-let pontosBack   = 0;
-
-btnVisual.addEventListener("click", function() {
-  pontosFront++;
-  exibirPerfil();
-});
-
-btnLogica.addEventListener("click", function() {
-  pontosBack++;
-  exibirPerfil();
-});
-
-function exibirPerfil() {
-  if (pontosFront > pontosBack) {
-    resultadoQuiz.textContent = "🎨 Perfil Front-End!";
-  } else if (pontosBack > pontosFront) {
-    resultadoQuiz.textContent = "⚙️ Perfil Back-End!";
-  } else {
-    resultadoQuiz.textContent = "🔄 Perfil Full Stack — você é dos dois!";
-  }
-}``
-
-//LAÇOS DE REPETIÇÃO -------------------------------------------------------------
-
-// laço de repetição FOR
-let habilidades = ["Esforçada", "Inteligente", "Eloquente", "Engraçada"];
-for (let i = 0; i < habilidades.length; i++) {
-    document.write(`<p> ${habilidades[i]} </p>`)
-};  
-
-// laço de repetição WHILE
-let num = prompt("Digite um número par:")
-while (num % 2 !==0) {
-    num = prompt("Ops, esse número não é par. Tente novamente!");
+    document.getElementById("meuNome").innerText = NOME;
+    document.getElementById("tituloProfissional").innerText = tituloProfissional;
+    document.getElementById("minhaBio").innerText = minhaBio;
+    document.getElementById("anoFormatura").innerText = "Ano de formatura: " + anoFormatura;
+    document.getElementById("tempoRestante").innerText = calcularTempoRestante();
 }
 
-//laço de repetição DO WHILE
-do {
-    num = prompt("Digite um número par");
-} while (num % 2 !==0);
+mostrarDadosPessoais();
 
-// Colocar e tirar elementos de listas
+//-----------------------------------------------------------------------------------------------
+// JORNADA
 
-let projetos =[
-  //objeto de index 0
- {nome: "Aplicação de Estacionamento",
- tecnlogias: ["Python", "Tkinter", "Tkinter", "fpdf"],
- conhecimentos: "VsCode, Github, pip, PyInstaller",
- descricao: "Aplicação desktop para gerenciamento de estacionamento"
-},
-//objeto de index 1
-{nome: "Portifólio",
-tecnologias: ["Python", "Js", "html"],
-conhecimentos: "Github",
-descricao: "Criação de portifólio online"
+function aplicarEstiloJornada(cor) {
+
+    resultadoJornada.style.backgroundColor = cor;
+    resultadoJornada.style.padding = "15px";
+    resultadoJornada.style.borderRadius = "10px";
+    resultadoJornada.style.marginTop = "15px";
+    resultadoJornada.style.color = "#333";
 }
-]
-document.createElement("h2").textContent = projetos[0].nome
-console.log(projetos[1].descricao);
-console.log(projetos[1].tecnologias[0]);
 
-/* COMANDOS PARA ADICIONAR E RETIRAR ITENS DE LISTAS
-push()    → adiciona no FIM
-pop()     → remove do FIM
-unshift() → adiciona no INÍCIO
-shift()   → remove do INÍCIO
-indexOf() → encontra o índice de um elemento
-splice()  → remove/insere em posição específica */
+function mostrarJornada(titulo, texto, cor) {
+
+    resultadoJornada.innerHTML = `
+        <strong>${titulo}</strong><br><br>
+        ${texto}
+    `;
+
+    aplicarEstiloJornada(cor);
+}
+//
+// BOTÕES DA JORNADA
+
+document.getElementById("btn-quemsoueu")
+.addEventListener("click", function () {
+
+    mostrarJornada(
+        "👤 Quem sou eu",
+        "Meu nome é Francesca, sou natural de Divinópolis Minas Gerais. Sou cristã e minha maior aspiração é contribuir para um mundo melhor.",
+        "#e8f4fd"
+    );
+});
+
+document.getElementById("btn-comeco")
+.addEventListener("click", function () {
+
+    mostrarJornada(
+        "🚀 Como comecei",
+        "Minha jornada começou observando meu irmão UX designer e entrando no curso técnico de ADS.",
+        "#fde8e8"
+    );
+});
+
+document.getElementById("btn-estudos")
+.addEventListener("click", function () {
+
+    mostrarJornada(
+        "📚 O que estou estudando",
+        "Estou estudando Front-End, Back-End, HTML, JavaScript e manipulação do DOM.",
+        "#f3e8fd"
+    );
+});
+
+document.getElementById("btn-objetivos")
+.addEventListener("click", function () {
+
+    mostrarJornada(
+        "🎯 Meus objetivos",
+        "Ingressar em Sistemas de Informação e evoluir como desenvolvedora web.",
+        "#e8f8f0"
+    );
+});
+
+document.getElementById("btn-inspiracoes")
+.addEventListener("click", function () {
+
+    mostrarJornada(
+        "💡 Minhas inspirações",
+        "Me inspiro em desenvolvedores criativos e tecnologia que resolve problemas reais.",
+        "#fff4d9"
+    );
+});
